@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 2</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  img {
+    width: 700px;
+    height: 400px;
+  }
+</style>
+</head>
+<body>
+<h2>Task 2: JavaScript and DOM Manipulation</h2>
+<img id="slideshow" src="images/image-1.jpg" alt="Slideshow Image">
+<div>
+<button id="colorButton">Change Background Color</button>
+</div>
+
+<script>
+
+  const changeBackgroundColor = () => {
+    const colors = ['#F08080', '#98FB98', '#87CEEB', '#FFD700'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = randomColor;
+  };
+
+  const colorButton = document.getElementById('colorButton');
+  colorButton.addEventListener('click', changeBackgroundColor);
+
+
+  const images = ['images/image-1.jpg', 'images/image-2.jpg', 'images/image-3.jpg'];
+  let currentIndex = 0;
+
+  const showNextImage = () => {
+    const imgElement = document.getElementById('slideshow');
+    imgElement.src = images[currentIndex];
+    currentIndex = (currentIndex + 1) % images.length;
+  };
+
+  setInterval(showNextImage, 3000); // Change image every 3 seconds
+</script>
+</body>
+</html>
